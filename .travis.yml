@@ -1,0 +1,13 @@
+dist: trusty
+language: go
+
+sudo: required
+env:
+  - GOOS=linux
+
+services:
+  - docker
+
+script:
+  - docker build -t chat --file Dockerfile .
+  - docker run --rm -t chat go test ./...
